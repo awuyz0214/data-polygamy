@@ -18,7 +18,7 @@ import net.sf.javaml.core.DenseInstance;
 import net.sf.javaml.distance.fastdtw.dtw.DTW;
 import net.sf.javaml.distance.fastdtw.timeseries.TimeSeries;
 
-import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
+import org.apache.commons.math3.stat.correlation.SpearmansCorrelation;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.Text;
@@ -493,8 +493,8 @@ public class CorrelationTechniquesReducer extends Reducer<PairAttributeWritable,
         array1 = null;
         array2 = null;
         
-        PearsonsCorrelation pearsonsCorr = new PearsonsCorrelation();
-        values[0] = pearsonsCorr.correlation(tempDoubleArray1, tempDoubleArray2);
+        SpearmansCorrelation spearmansCorr = new SpearmansCorrelation();
+        values[0] = spearmansCorr.correlation(tempDoubleArray1, tempDoubleArray2);
         
         // Mutual Information
         
